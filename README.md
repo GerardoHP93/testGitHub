@@ -15,3 +15,5 @@ funcion test() {
 }
 print("hola mundo")
 ```
+
+![]texto(ruta)
