@@ -13,6 +13,11 @@ public class Municipio {
 
     }
 
+    public Municipio(int id, String nombre) {
+        this.id = id;
+        this.nombre = nombre;
+    }
+
     public int getId() {
         return id;
     }
@@ -28,6 +33,12 @@ public class Municipio {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
-    
+
+    @Override
+    public String toString() {
+
+        return "Municipio{" + "id=" + id + ", nombre=" + nombre + '}';
+    }
+
+
 }
