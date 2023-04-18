@@ -4,6 +4,7 @@
  */
 package com.mycompany.tablas;
 
+import java.util.ArrayList;
 import models.Municipio;
 
 /**
@@ -11,14 +12,22 @@ import models.Municipio;
  * @author Gerardo Herrera
  */
 public class Main {
-    public static void main(String[] args) {
-        Municipio calkini = new Municipio(1,"Calkini");
-        System.out.println(calkini.toString());
+    
+    static ArrayList<Municipio> municipios = new ArrayList<>();
+    
+    public static void llenarMunicipios(){
+        municipios.add(new Municipio(1,"Calkini"));
+        municipios.add(new Municipio(2,"Campeche"));
+        municipios.add(new Municipio(3,"Carmen"));
+
+        System.out.println(municipios);
         
-        Municipio campeche = new Municipio();
-        campeche.setId(2);
-        campeche.setNombre("Campeche");
-        System.out.println(campeche.toString());
+        
+    }
+    
+    
+    public static void main(String[] args) {
+       llenarMunicipios();
        
     }
 }
