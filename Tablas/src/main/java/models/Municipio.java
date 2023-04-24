@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Municipio {
     private int id;
     private String nombre;
-    static ArrayList<Municipio> municipios = new ArrayList<>();
+    public static ArrayList<Municipio> municipios = new ArrayList<>();
 
 
     public Municipio() {
