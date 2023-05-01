@@ -41,10 +41,7 @@ public class Municipio {
         public static void llenarMunicipios(){
         municipios.add(new Municipio(1,"Calkini"));
         municipios.add(new Municipio(2,"Campeche"));
-        municipios.add(new Municipio(3,"Carmen"));
-
-        System.out.println(municipios);
-        
+        municipios.add(new Municipio(3,"Carmen"));        
         
     }
     
@@ -64,13 +61,18 @@ public class Municipio {
     }
     
     public static void eliminarMunicipios(int id){
-        municipios.remove(id-1);
+        municipios.remove(id);
     }
         
     public static void añadirMunicipios(int id,String nombre){
         municipios.add(new Municipio(id,nombre));
     }
     
+    public static void actualizarMunicipio(int recNo, int id, String nombre){
+        municipios.get(recNo).setId(id);
+        municipios.get(recNo).setNombre(nombre);
+
+    }
     
     @Override
     public String toString() {
