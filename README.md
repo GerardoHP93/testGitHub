@@ -114,7 +114,7 @@ Se crea un JFrame, y creamos los textField para colocar los datos de nuestro est
 De igual forma los botones aceptar, eliminar, limpiar y actualizar. Y tambien un JTable que sera donde se muestren los datos.
 Yo lo puse todo en un jPanel solo para ponerle un color.
 
-
+[![1.png](https://i.postimg.cc/ncC8k8Rc/1.png)](https://postimg.cc/YhKyrPBJ)
 
 
 ![]texto(ruta)
