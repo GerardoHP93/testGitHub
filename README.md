@@ -59,8 +59,60 @@ public class Estado {
 
 ```
 
-## Se crea sus métodos modificar el ArrayList de los Estados tales como: llenar los Estados (Estados que apareceran por defecto), para recorrer los Estados, eliminar,
+## Se crea algunos métodos modificar el ArrayList.
+
+Tales métodos necesarios tales como: llenar los Estados (Estados que apareceran por defecto), para recorrer los Estados, eliminar,
 añadir y actualizar, todo estos métodos seran llamados luego al hacer click en los botones de la interfaz.
+
+```
+    public static void llenarEstados(){
+        estados.add(new Estado(1,"Campeche","Calkini"));
+        estados.add(new Estado(2,"Campeche","Seybaplaya"));
+        estados.add(new Estado(3,"Yucatan","Progreso"));        
+        estados.add(new Estado(4,"Yucatan","Mérida"));   
+        estados.add(new Estado(3,"Tabasco","VillaHermosa"));  
+    }
+    
+    
+    public static void listaEstadosForE(){
+        System.out.println("For each");
+        for (Estado estado : estados) {
+            System.out.println(estado);
+        }
+    }
+    
+    public static void listaEstadosForI(){
+        System.out.println("forI");
+        for (int i = 0; i < estados.size(); i++) {
+            System.out.println(estados.get(i).toString());
+        }
+    }
+    
+    //Se elimina un objeto estado a través de su ID.
+    public static void eliminarEstados(int id){
+        estados.remove(id);
+    }
+        
+    //Se añade un nuevo Estado llamando al método add y dentro al constructor creado anteriormente    
+    public static void añadirEstados(int id,String nombre, String municipio){
+        estados.add(new Estado(id,nombre,municipio));
+    }
+    
+    //Se modifican los valores de un objeto Estado ya creado, utilizando el atributo recNo como identificador.
+    public static void actualizarEstado(int recNo, int id, String nombre, String municipio){
+        estados.get(recNo).setId(id);
+        estados.get(recNo).setNombre(nombre);
+        estados.get(recNo).setMunicipio(municipio);
+
+    }
+ 
+
+```
+## Creamos la interfaz para mostrar los datos con una tabla
+
+Se crea un JFrame, y creamos los textField para colocar los datos de nuestro estado que queramos ingresar o actualizar. 
+De igual forma los botones aceptar, eliminar, limpiar y actualizar. Y tambien un JTable que sera donde se muestren los datos.
+Yo lo puse todo en un jPanel solo para ponerle un color.
 
 
 
