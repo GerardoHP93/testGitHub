@@ -59,7 +59,7 @@ public class Estado {
 
 ```
 
-##Se crea sus métodos modificar el ArrayList de los Estados tales como: llenar los Estados (Estados que apareceran por defecto), para recorrer los Estados, eliminar,
+## Se crea sus métodos modificar el ArrayList de los Estados tales como: llenar los Estados (Estados que apareceran por defecto), para recorrer los Estados, eliminar,
 añadir y actualizar, todo estos métodos seran llamados luego al hacer click en los botones de la interfaz.
 
 
