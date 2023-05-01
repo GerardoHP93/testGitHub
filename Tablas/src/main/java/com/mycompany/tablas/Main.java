@@ -2,8 +2,8 @@ package com.mycompany.tablas;
 
 import Views.Principal;
 import java.util.ArrayList;
-import models.Municipio;
-import static models.Municipio.*;
+import models.Estado;
+import static models.Estado.*;
 
 /**
  *
