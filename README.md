@@ -1,5 +1,6 @@
 # Proyecto catalogo de Estados y Municipios utilizando POO y JTable
 
+# Alumno: Herrera Pacheco Gerardo Isidro ISC 4B 68612
 
 ## Se crea el modelo Estado.
 
@@ -119,7 +120,7 @@ Yo lo puse todo en un jPanel solo para ponerle un color.
 ## Configurar el JTable para mostrar los datos
 
 1- Instanciamos un modelo de tabla (DefaultTableModel), nos servira para modificar nuestro Jtable. Ahora agregamos el método para agregar la cabezera al Jtable.
-A través de un arreglo con los nombre que queramos que tengan nuestras columnas. 
+A través de un arreglo con los nombres que queramos que tengan nuestras columnas. 
 
 ```
     public void setModelo(){
@@ -130,7 +131,7 @@ A través de un arreglo con los nombre que queramos que tengan nuestras columnas
 ```
 
 2- Se agrega el método setDatos(), para añadir los datos a la tabla. Se crea primero un arreglo de tipo Object que servira para guardar los datos de cada objeto
-Estado cuando se vayan interando por cada vuelta con el forEach en el orden de las columnas, y se vayan guardando en la filas del Jtable.
+Estado cuando se vayan iterando por cada vuelta con el forEach en el orden de las columnas, y se vayan guardando en la filas del Jtable.
 
 ```
     public void setDatos(){
@@ -152,7 +153,7 @@ Estado cuando se vayan interando por cada vuelta con el forEach en el orden de l
 ```
 ## Le damos funcionalidad a los botones, creando las instrucciones necesarias dependiendo del botón
 
-1- Método camposVacios(). Yo lo coloque para virificar si los campos de textField tienen el texto predeterminado que les coloque, si es asi es porque no se ha ingresado nada y no deja agregar o actualizar los Estados.
+1- Método camposVacios(). Yo lo coloque para verificar si los campos de textField tienen el texto predeterminado que les coloque, si es asi es porque no se ha ingresado nada y no deja agregar o actualizar los Estados.
 
 ```
     public boolean camposVacios(){
@@ -168,7 +169,7 @@ Estado cuando se vayan interando por cada vuelta con el forEach en el orden de l
     
 ```
 
-1. Método limpiarCampos(). Se reseetea los campos de texto de los textField. 
+2. Método limpiarCampos(). Se reseetea los campos de texto de los textField. 
 ```
     public void limpiarCampos(){
         this.txtRecNo.setText("-1");
@@ -182,8 +183,7 @@ Estado cuando se vayan interando por cada vuelta con el forEach en el orden de l
 
     }
 ```
-2- Botón "Aceptar" MouseClicked. Si los campos de textEdit no se ha ingresado nada, sale un mensaje de error. Si si, se colocan los datos ingresados en los textField en variables dependiendo el dato. Y se hace un if para verificar si el estado existe o decir su Registro, para eso se usa la variables RecNo. Si no existe se añade un nuevo estado a travez del metodo añadirEstado(). Si ya existe es porque esta
-actualizando y por eso que aparece compo que ya existe el registro. Entonces se llama al método actualizar. Al final de setean los datos de nuevo a la tabla.
+3- Botón "Aceptar" MouseClicked. Si los campos de textEdit no se ha ingresado nada, sale un mensaje de error. Si si, se colocan los datos ingresados en los textField en variables. Y se hace un if para verificar si el estado existe o decir su Registro, para eso se usa la variables RecNo. Si no existe se añade un nuevo estado a través del metodo añadirEstado(). Si ya existe es porque esta actualizando y por eso que aparece como que ya existe el registro. Entonces se llama al método actualizar. Al final de setean los datos de nuevo a la tabla.
 
 ```
     private void btnCAceptarMouseClicked(java.awt.event.MouseEvent evt) {                                         
@@ -214,7 +214,7 @@ actualizando y por eso que aparece compo que ya existe el registro. Entonces se 
     }
 ```
 
-3. Boton limpiar. Se llama al método limpiar. 
+4. Boton limpiar. Se llama al método limpiar. 
 
 ```
     private void btnLimpiarMouseClicked(java.awt.event.MouseEvent evt) {                                        
@@ -222,7 +222,7 @@ actualizando y por eso que aparece compo que ya existe el registro. Entonces se 
     } 
 ```
 
-4- Botón eliminar. A través de una variable se verifica que fila esta seleccionada por el usuario, y con el método eliminar de la clase Estado se borra la fila. 
+5- Botón eliminar. A través de una variable se verifica que fila esta seleccionada por el usuario, y con el método eliminar de la clase Estado se borra la fila. 
 Si no esta seleccionada ninguna fila aparece un mensaje.
 
 ```
@@ -241,8 +241,8 @@ Si no esta seleccionada ninguna fila aparece un mensaje.
         
     }                                        
 ```
-5- Botón actualizar. El botón es un toggleBotton porque usaremos su estado determinar si se puede actualizar o no. Primero se guarda la fila seleccionada, si el boton actualizar esta seleccionado aparecen en los textField los datos de esa fila seleccionada, para ser modificados y después darle al botón actualizar para finalizar.
-Si no esta seleccionada ninguna fila aparece un mensaje.
+6- Botón actualizar. El botón es un toggleBotton porque usaremos su estado determinar si se puede actualizar o no. Primero se guarda la fila seleccionada, si el botón actualizar esta seleccionado aparecen en los textField los datos de esa fila seleccionada, para ser modificados y después darle al botón actualizar para finalizar.
+Si no esta seleccionada ninguna fila aparece un mensaje. Imprimir en la consola es opcional.
 
 ```
     private void btnActualizarMouseClicked(java.awt.event.MouseEvent evt) {                                           
@@ -272,4 +272,109 @@ Si no esta seleccionada ninguna fila aparece un mensaje.
     }
 ```
 
+## Funciones mouseClicked y MouseExited para los textField
+
+Esto yo lo agregue para darle estética y para que el botón aceptar no deje ingresar datos si no se ha ingresado nada. La funcionalidad ya se vio en el parcial anterior.
+
+```
+    private void txtNombreMouseClicked(java.awt.event.MouseEvent evt) {                                       
+        if (txtNombre.getText().equals("Nombre del estado")){
+            txtNombre.setText("");
+            txtNombre.setForeground(Color.BLACK);
+        }
+    }                                      
+
+    private void txtNombreMouseExited(java.awt.event.MouseEvent evt) {                                      
+        if (txtNombre.getText().equals("Nombre del estado") ||
+            txtNombre.getText().isEmpty()){
+            txtNombre.setText("Nombre del estado");
+            txtNombre.setForeground(Color.gray);
+        }
+    }                                     
+
+    private void txtIdMouseClicked(java.awt.event.MouseEvent evt) {                                   
+        if (txtId.getText().equals("Ingrese el ID")){
+            txtId.setText("");
+            txtId.setForeground(Color.BLACK);
+        }
+    }                                  
+
+    private void txtIdMouseExited(java.awt.event.MouseEvent evt) {                                  
+        if (txtId.getText().equals("Ingrese el ID") ||
+            txtId.getText().isEmpty()){
+            txtId.setText("Ingrese el ID");
+            txtId.setForeground(Color.gray);
+        }
+    }                                 
+
+    private void txtMunicipioMouseClicked(java.awt.event.MouseEvent evt) {                                          
+        if (txtMunicipio.getText().equals("Un municipio del estado")){
+            txtMunicipio.setText("");
+            txtMunicipio.setForeground(Color.BLACK);
+        }
+    }                                         
+
+    private void txtMunicipioMouseExited(java.awt.event.MouseEvent evt) {                                         
+        if (txtMunicipio.getText().equals("Un municipio del estado") ||
+            txtMunicipio.getText().isEmpty()){
+            txtMunicipio.setText("Un municipio del estado");
+            txtMunicipio.setForeground(Color.gray);
+        }
+    }                                        
+```
+
+## Constructor de JFrame. Se hace invisible el txtEdit del RecNo porque este no es necesario que se modifique. Tambien quite el label RecNo.
+```
+    public Principal() {
+
+        initComponents();
+        this.txtRecNo.setText("-1");
+        this.txtRecNo.setVisible(false);
+
+        Estado.llenarEstados();
+        setModelo();
+        setDatos();
+        tlbEstados.repaint();
+        limpiarCampos();
+    }
+```
+
+## Clase main para ejecutar el programa.
+
+Por las buenas practicas de programación, el programa se corre solo desde la clase controladora y con solo dos instrucciones.
+```
+    import Views.Principal;
+
+    /**
+     *
+     * @author Gerardo Herrera
+     */
+    public class Main {
+
+        public static Principal principal = new Principal();
+
+
+        public static void main(String[] args) {
+
+
+            principal.setVisible(true);
+            principal.setLocationRelativeTo(null);
+
+        }
+    }
+```
+
+## Funcionamiento del programa
+
+1. Aparecen los datos predeterminados en la tabla.
+
+2. Se limpian datos de los campos con el botón limpiar
+
+3. Se añade un nuevo estado con el boton insertar
+
+4. Se elimina el estado con el boton eliminar
+
+5. Se presiona el botón actualizar y aparecen los datos de la fila seleccionada.
+
+6. Se cambian los valores y se le da aceptar y cambian los datos en la fila.
 
