@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * @author Gerardo Herrera
  */
 public class Estado {
-    private int id;
+    private String id;
     private String nombre;
     private String municipio;
     public static ArrayList<Estado> estados = new ArrayList<>();
@@ -17,17 +17,17 @@ public class Estado {
     public Estado() {
     }
 
-    public Estado(int id, String nombre, String municipio) {
+    public Estado(String id, String nombre, String municipio) {
         this.id = id;
         this.nombre = nombre;
         this.municipio = municipio;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -49,11 +49,11 @@ public class Estado {
     
     
     public static void llenarEstados(){
-        estados.add(new Estado(1,"Campeche","Calkini"));
-        estados.add(new Estado(2,"Campeche","Seybaplaya"));
-        estados.add(new Estado(3,"Yucatan","Progreso"));        
-        estados.add(new Estado(4,"Yucatan","Mérida"));   
-        estados.add(new Estado(3,"Tabasco","VillaHermosa"));  
+        estados.add(new Estado("1","Campeche","Calkini"));
+        estados.add(new Estado("2","Campeche","Seybaplaya"));
+        estados.add(new Estado("3","Yucatan","Progreso"));        
+        estados.add(new Estado("4","Yucatan","Mérida"));   
+        estados.add(new Estado("5","Tabasco","VillaHermosa"));  
     }
     
     
@@ -75,11 +75,11 @@ public class Estado {
         estados.remove(id);
     }
         
-    public static void añadirEstados(int id,String nombre, String municipio){
+    public static void añadirEstados(String id,String nombre, String municipio){
         estados.add(new Estado(id,nombre,municipio));
     }
     
-    public static void actualizarEstado(int recNo, int id, String nombre, String municipio){
+    public static void actualizarEstado(int recNo, String id, String nombre, String municipio){
         estados.get(recNo).setId(id);
         estados.get(recNo).setNombre(nombre);
         estados.get(recNo).setMunicipio(municipio);

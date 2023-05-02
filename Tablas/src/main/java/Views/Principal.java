@@ -4,10 +4,11 @@
  */
 package Views;
 
+import java.awt.Color;
+import static java.awt.Color.GRAY;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import models.Estado;
-import static models.Estado.llenarEstados;
 import static models.Estado.estados;
 
 /**
@@ -31,7 +32,7 @@ public class Principal extends javax.swing.JFrame {
         this.txtRecNo.setText("-1");
         this.txtRecNo.setVisible(false);
 
-        llenarEstados();
+        Estado.llenarEstados();
         setModelo();
         setDatos();
         tlbEstados.repaint();
@@ -64,9 +65,25 @@ public class Principal extends javax.swing.JFrame {
     
     public void limpiarCampos(){
         this.txtRecNo.setText("-1");
-        this.txtId.setText("");
-        this.txtNombre.setText("");
-        this.txtMunicipio.setText("");
+        this.txtId.setText("Ingrese el ID");
+        this.txtId.setForeground(GRAY);
+        this.txtNombre.setText("Nombre del estado");
+        this.txtNombre.setForeground(GRAY);
+
+        this.txtMunicipio.setText("Un municipio del estado");
+        this.txtMunicipio.setForeground(GRAY);
+
+    }
+    
+    public boolean camposVacios(){
+        if(txtNombre.getText().equals("Nombre del estado") 
+            || txtId.getText().equals("Ingrese el ID")
+            || txtMunicipio.getText().equals("Un municipio del estado")){
+            return false;
+        }else{
+            return true;
+        }
+        
     }
     
     /**
@@ -106,6 +123,39 @@ public class Principal extends javax.swing.JFrame {
 
         lblMunicipio.setFont(new java.awt.Font("Modern No. 20", 1, 14)); // NOI18N
         lblMunicipio.setText("Municipio");
+
+        txtNombre.setForeground(new java.awt.Color(204, 204, 204));
+        txtNombre.setText("Nombre del estado");
+        txtNombre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtNombreMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                txtNombreMouseExited(evt);
+            }
+        });
+
+        txtId.setForeground(new java.awt.Color(204, 204, 204));
+        txtId.setText("Ingrese el ID");
+        txtId.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtIdMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                txtIdMouseExited(evt);
+            }
+        });
+
+        txtMunicipio.setForeground(new java.awt.Color(204, 204, 204));
+        txtMunicipio.setText("Un municipio del estado");
+        txtMunicipio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtMunicipioMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                txtMunicipioMouseExited(evt);
+            }
+        });
 
         btnCAceptar.setFont(new java.awt.Font("Modern No. 20", 1, 12)); // NOI18N
         btnCAceptar.setText("Aceptar");
@@ -179,27 +229,26 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblNombre)
                             .addComponent(lblID)
-                            .addComponent(lblMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblNombre))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtId)
                             .addComponent(txtNombre)
-                            .addComponent(txtMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(71, 71, 71)
-                        .addComponent(txtRecNo, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtMunicipio, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE))
+                        .addGap(98, 98, 98)
+                        .addComponent(txtRecNo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jLabel1)
-                .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtRecNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jLabel1)
+                        .addGap(29, 29, 29)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblNombre)
                             .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -207,11 +256,15 @@ public class Principal extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblID)
                             .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblMunicipio)
-                            .addComponent(txtMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(89, 89, 89)
+                        .addComponent(txtRecNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblMunicipio)
+                    .addComponent(txtMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -239,12 +292,13 @@ public class Principal extends javax.swing.JFrame {
                         
     
     private void btnCAceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCAceptarMouseClicked
+            
+        if (camposVacios()) {
+        
             int recNo = Integer.parseInt(this.txtRecNo.getText().trim());
-            int id = Integer.parseInt(this.txtId.getText().trim());
+            String id = this.txtId.getText();
             String nombre = this.txtNombre.getText(); 
             String municipio = this.txtMunicipio.getText();      
-
-
         
             if (recNo == -1) {
                 Estado.añadirEstados(id, nombre, municipio);
@@ -256,7 +310,13 @@ public class Principal extends javax.swing.JFrame {
             }
 
             setDatos();
-            limpiarCampos();      
+            limpiarCampos();                  
+        
+        }else{
+            JOptionPane.showMessageDialog(null, "Por favor rellene todos los campos");
+        }
+        
+            
                
     }//GEN-LAST:event_btnCAceptarMouseClicked
 
@@ -309,6 +369,52 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCAceptarActionPerformed
 
+    private void txtNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombreMouseClicked
+        if (txtNombre.getText().equals("Nombre del estado")){
+            txtNombre.setText("");
+            txtNombre.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_txtNombreMouseClicked
+
+    private void txtNombreMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombreMouseExited
+        if (txtNombre.getText().equals("Nombre del estado") ||
+            txtNombre.getText().isEmpty()){
+            txtNombre.setText("Nombre del estado");
+            txtNombre.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_txtNombreMouseExited
+
+    private void txtIdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtIdMouseClicked
+        if (txtId.getText().equals("Ingrese el ID")){
+            txtId.setText("");
+            txtId.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_txtIdMouseClicked
+
+    private void txtIdMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtIdMouseExited
+        if (txtId.getText().equals("Ingrese el ID") ||
+            txtId.getText().isEmpty()){
+            txtId.setText("Ingrese el ID");
+            txtId.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_txtIdMouseExited
+
+    private void txtMunicipioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtMunicipioMouseClicked
+        if (txtMunicipio.getText().equals("Un municipio del estado")){
+            txtMunicipio.setText("");
+            txtMunicipio.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_txtMunicipioMouseClicked
+
+    private void txtMunicipioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtMunicipioMouseExited
+        if (txtMunicipio.getText().equals("Un municipio del estado") ||
+            txtMunicipio.getText().isEmpty()){
+            txtMunicipio.setText("Un municipio del estado");
+            txtMunicipio.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_txtMunicipioMouseExited
+
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btnActualizar;
