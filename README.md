@@ -372,19 +372,27 @@ Por las buenas practicas de programación, el programa se corre solo desde la cl
 [![1.png](https://i.postimg.cc/L4LgCZG0/1.png)](https://postimg.cc/pyVdyyWD)
 
 2. Se limpian datos de los campos con el botón limpiar
+
 [![2.png](https://i.postimg.cc/fTst6RNW/2.png)](https://postimg.cc/4n8xcZyj)
 
 3. Se añade un nuevo estado con el boton insertar
+
 [![3-1.png](https://i.postimg.cc/sDJQyCjY/3-1.png)](https://postimg.cc/SJJN75zR)
+
 [![3-2.png](https://i.postimg.cc/8zPFzXcq/3-2.png)](https://postimg.cc/tYwRr5h5)
 
 4. Se elimina el estado con el boton eliminar
+
 [![4-1.png](https://i.postimg.cc/y8QDghSW/4-1.png)](https://postimg.cc/Xr5jtCL0)
+
 [![4-2.png](https://i.postimg.cc/Qt5CyRYW/4-2.png)](https://postimg.cc/BLSJ8w0q)
 
 5. Se presiona el botón actualizar y aparecen los datos de la fila seleccionada.
+
 [![5-1.png](https://i.postimg.cc/sxrxdwbH/5-1.png)](https://postimg.cc/qh142XJ2)
+
 [![5-2.png](https://i.postimg.cc/fyfLwYNz/5-2.png)](https://postimg.cc/4HnZP7yq)
 
 6. Se cambian los valores y se le da aceptar y cambian los datos en la fila.
+
 [![6.png](https://i.postimg.cc/446nbRhD/6.png)](https://postimg.cc/nMLHp522)
