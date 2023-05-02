@@ -152,23 +152,46 @@ Estado cuando se vayan interando por cada vuelta con el forEach en el orden de l
 ```
 ## Le damos funcionalidad a los botones, creando las instrucciones necesarias dependiendo del botón
 
-1. Método limpiarCampos(). Se vacia el texto de los textField.
+1- Método camposVacios(). Yo lo coloque para virificar si los campos de textField tienen el texto predeterminado que les coloque, si es asi es porque no se ha ingresado nada y no deja agregar o actualizar los Estados.
+
+```
+    public boolean camposVacios(){
+        if(txtNombre.getText().equals("Nombre del estado") 
+            || txtId.getText().equals("Ingrese el ID")
+            || txtMunicipio.getText().equals("Un municipio del estado")){
+            return false;
+        }else{
+            return true;
+        }
+        
+    }
+    
+```
+
+1. Método limpiarCampos(). Se reseetea los campos de texto de los textField. 
 ```
     public void limpiarCampos(){
         this.txtRecNo.setText("-1");
-        this.txtId.setText("");
-        this.txtNombre.setText("");
-        this.txtMunicipio.setText("");
+        this.txtId.setText("Ingrese el ID");
+        this.txtId.setForeground(GRAY);
+        this.txtNombre.setText("Nombre del estado");
+        this.txtNombre.setForeground(GRAY);
+
+        this.txtMunicipio.setText("Un municipio del estado");
+        this.txtMunicipio.setForeground(GRAY);
+
     }
 ```
-2- Botón "Aceptar" MouseClicked. Se colocan los datos ingresados en los textField en variables dependiendo el dato. Y se hace un if para verificar si el estado existe
-o decir su Registro, para eso se usa la variables RecNo. Si no existe se añade un nuevo estado a travez del metodo añadirEstado(). Si ya existe es porque esta
+2- Botón "Aceptar" MouseClicked. Si los campos de textEdit no se ha ingresado nada, sale un mensaje de error. Si si, se colocan los datos ingresados en los textField en variables dependiendo el dato. Y se hace un if para verificar si el estado existe o decir su Registro, para eso se usa la variables RecNo. Si no existe se añade un nuevo estado a travez del metodo añadirEstado(). Si ya existe es porque esta
 actualizando y por eso que aparece compo que ya existe el registro. Entonces se llama al método actualizar. Al final de setean los datos de nuevo a la tabla.
 
 ```
     private void btnCAceptarMouseClicked(java.awt.event.MouseEvent evt) {                                         
+            
+        if (camposVacios()) {
+        
             int recNo = Integer.parseInt(this.txtRecNo.getText().trim());
-            int id = Integer.parseInt(this.txtId.getText().trim());
+            String id = this.txtId.getText();
             String nombre = this.txtNombre.getText(); 
             String municipio = this.txtMunicipio.getText();      
         
@@ -182,7 +205,11 @@ actualizando y por eso que aparece compo que ya existe el registro. Entonces se 
             }
 
             setDatos();
-            limpiarCampos();      
+            limpiarCampos();                  
+        
+        }else{
+            JOptionPane.showMessageDialog(null, "Por favor rellene todos los campos");
+        }   
                
     }
 ```
